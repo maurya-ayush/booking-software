@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+import "~/styles/Calendar.css";
 
 const inter = Inter({
   subsets: ["latin"],
