@@ -26,16 +26,15 @@ export const adminRouter = createTRPCRouter({
           .setProtectedHeader({ alg: "HS256" })
           .setJti(nanoid())
           .setIssuedAt()
-          .setExpirationTime("2h")
+          .setExpirationTime("1h")
           .sign(new TextEncoder().encode(getJwtSecretKey()));
 
         res.setHeader(
           "Set-Cookie",
-          cookie.serialize("user-token", token, {
+          cookie.serialize('user-token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
             path: "/",
+            secure: process.env.NODE_ENV === "production",
           })
         );
 
